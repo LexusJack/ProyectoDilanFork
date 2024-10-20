@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Proyectos I+D</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Stylesheets-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <style>
+      .ie-panel {
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+        clear: both;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      html.ie-10 .ie-panel,
+      html.lt-ie-10 .ie-panel {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ie-panel">
+      <a href="http://windows.microsoft.com/en-US/internet-explorer/"></a>
+    </div>
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Loading...</p>
+      </div>
+    </div>
+    <div class="page">
+      <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav
+            class="rd-navbar rd-navbar-corporate"
+            data-layout="rd-navbar-fixed"
+            data-sm-layout="rd-navbar-fixed"
+            data-md-layout="rd-navbar-fixed"
+            data-md-device-layout="rd-navbar-fixed"
+            data-lg-layout="rd-navbar-static"
+            data-lg-device-layout="rd-navbar-fixed"
+            data-xl-layout="rd-navbar-static"
+            data-xl-device-layout="rd-navbar-static"
+            data-xxl-layout="rd-navbar-static"
+            data-xxl-device-layout="rd-navbar-static"
+            data-lg-stick-up-offset="46px"
+            data-xl-stick-up-offset="46px"
+            data-xxl-stick-up-offset="106px"
+            data-lg-stick-up="true"
+            data-xl-stick-up="true"
+            data-xxl-stick-up="true"
+          >
+            <div
+              class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
+              data-rd-navbar-toggle=".rd-navbar-collapse"
+            >
+              <span></span>
+            </div>
+            <div class="rd-navbar-aside-outer"></div>
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <div class="rd-navbar-nav-wrap">
+                  <ul
+                    class="list-inline list-inline-md rd-navbar-corporate-list-social"
+                  >
+                    <li><a class="icon fa fa-facebook" href="#"></a></li>
+                    <li><a class="icon fa fa-twitter" href="#"></a></li>
+                    <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                    <li><a class="icon fa fa-instagram" href="#"></a></li>
+                  </ul>
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="about.html">Gente</a>
+                    </li>
+                    <li class="rd-nav-item active">
+                      <a class="rd-nav-link" href="typography.html"
+                        >Proyectos I+D</a
+                      >
+                    </li>
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="contact-us.html"
+                        >Contactos</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Breadcrumbs -->
+
+      <!-- VISOR PRINCIPAL -->
+      <main>
+
+        <h4 class="mt-2 mb-2" id="titulo"></h4>
+        <h6 id="cuerpo"></h6>
+        <section
+          class="content d-flex justify-content-center align-items-center"
+        >
+          <div
+            id="openseadragon1"
+            class="viewer"
+            style="width: 870px; height: 550px"
+          ></div>
+        </section>
+        
+
+        <button class="btn btn-primary mt-3" id="openModalButton">
+          Guardar Anotaciones
+        </button>
+        <button class="btn btn-secondary mt-3" id="viewSavedFormsButton">
+          Ver Formularios Guardados
+        </button>
+
+        <div class="modal fade" id="annotationModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Formulario de Diagnóstico Patológico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <ul class="nav nav-tabs" id="annotationTabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#patient" role="tab">Datos del Paciente</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#procedure" role="tab">Procedimiento y Muestra</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#macro" role="tab">Descripción Macroscópica</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#micro" role="tab">Descripción Microscópica</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#biomarkers" role="tab">Pruebas y Biomarcadores</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#diagnosis" role="tab">Diagnóstico y Recomendaciones</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content mt-3">
+                  <div class="tab-pane fade show active" id="patient" role="tabpanel">
+                    <input type="text" class="form-control" id="patientName" placeholder="Nombre Completo" required />
+                    <input type="date" class="form-control" id="birthDate" required />
+                    <input type="text" class="form-control" id="patientID" required />
+                  </div>
+
+                  <div class="tab-pane fade" id="procedure" role="tabpanel">
+                    <input type="datetime-local" class="form-control" id="procedureDate" required />
+                    <select class="form-control" id="sampleType">
+                      <option>Biopsia</option>
+                      <option>Punción</option>
+                      <option>Citología</option>
+                    </select>
+                    <input type="text" class="form-control" id="anatomicalLocation" required />
+                  </div>
+
+                  <div class="tab-pane fade" id="macro" role="tabpanel">
+                    <input type="text" class="form-control" id="dimensions" placeholder="Dimensiones" />
+                    <input type="text" class="form-control" id="texture" placeholder="Textura" />
+                  </div>
+
+                  <div class="tab-pane fade" id="micro" role="tabpanel">
+                    <select class="form-control" id="cellType">
+                      <option>Escamoso</option>
+                      <option>Glandular</option>
+                    </select>
+                    <input type="number" class="form-control" id="ki67" placeholder="Índice Mitótico" />
+                  </div>
+
+                  <div class="tab-pane fade" id="biomarkers" role="tabpanel">
+                    <select class="form-control" id="her2">
+                      <option>Positivo</option>
+                      <option>Negativo</option>
+                    </select>
+                    <select class="form-control" id="brca">
+                      <option>BRCA1</option>
+                      <option>BRCA2</option>
+                      <option>Ninguno</option>
+                    </select>
+                  </div>
+
+                  <div class="tab-pane fade" id="diagnosis" role="tabpanel">
+                    <input type="text" class="form-control" id="tnm" placeholder="Clasificación TNM" />
+                    <textarea class="form-control" id="recommendations" placeholder="Recomendaciones"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="saveAnnotationButton">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+ <!-- Modal para Ver Formularios Guardados -->
+ <div class="modal fade" id="viewSavedFormsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Formularios Guardados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="savedFormsDetails"></div>
+    </div>
+  </div>
+</div>
+      </main>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          const annotationModal = new bootstrap.Modal(document.getElementById('annotationModal'));
+          document.getElementById('openModalButton').addEventListener('click', () => annotationModal.show());
+          document.getElementById('saveAnnotationButton').addEventListener('click', () => {
+            const annotation = {
+              patientName: document.getElementById('patientName').value,
+              birthDate: document.getElementById('birthDate').value,
+              patientID: document.getElementById('patientID').value,
+              procedureDate: document.getElementById('procedureDate').value,
+              sampleType: document.getElementById('sampleType').value,
+              anatomicalLocation: document.getElementById('anatomicalLocation').value,
+              dimensions: document.getElementById('dimensions').value,
+              texture: document.getElementById('texture').value,
+              cellType: document.getElementById('cellType').value,
+              ki67: document.getElementById('ki67').value,
+              her2: document.getElementById('her2').value,
+              brca: document.getElementById('brca').value,
+              tnm: document.getElementById('tnm').value,
+              recommendations: document.getElementById('recommendations').value,
+            };
+            let annotations = JSON.parse(localStorage.getItem('annotations')) || [];
+            annotations.push(annotation);
+            localStorage.setItem('annotations', JSON.stringify(annotations));
+            annotationModal.hide();
+          });
+        </script>
+
+      <div class="section-separation"></div>
+
+      <footer class="section footer-corporate context-dark">
+        <div class="footer-corporate-inset">
+          <div class="container">
+            <div class="row row-40 justify-content-lg-between">
+              <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
+                <div class="oh-desktop">
+                  <div class="wow slideInRight" data-wow-delay="0s">
+                    <h6 class="text-spacing-100 text-uppercase">Contact us</h6>
+                    <ul class="footer-contacts d-inline-block d-sm-block">
+                      <li>
+                        <div class="unit">
+                          <div class="unit-left">
+                            <span class="icon fa fa-phone"></span>
+                          </div>
+                          <div class="unit-body">
+                            <a class="link-phone" href="tel:#">
+                              (+593) 2 3962900</a
+                            >
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="unit">
+                          <div class="unit-left">
+                            <span class="icon fa fa-envelope"></span>
+                          </div>
+                          <div class="unit-body">
+                            <a class="link-aemail" href="mailto:#"
+                              >GIByB-UPS@gmail.com</a
+                            >
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="unit">
+                          <div class="unit-left">
+                            <span class="icon fa fa-location-arrow"></span>
+                          </div>
+                          <div class="unit-body">
+                            <a class="link-location" href="#"
+                              >Ecuador - Quito
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+                <div class="oh-desktop">
+                  <div class="wow slideInDown" data-wow-delay="0s">
+                    <h6 class="text-spacing-100 text-uppercase">
+                      Popular news
+                    </h6>
+                    <!-- Post Minimal 2-->
+                    <article class="post post-minimal-2">
+                      <p class="post-minimal-2-title"><a href="#"> new</a></p>
+                      <div class="post-minimal-2-time">
+                        <time datetime="2019-05-04">date </time>
+                      </div>
+                    </article>
+                    <!-- Post Minimal 2-->
+                    <article class="post post-minimal-2">
+                      <p class="post-minimal-2-title"><a href="#"> new </a></p>
+                      <div class="post-minimal-2-time">
+                        <time datetime="2019-05-04">date </time>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
+                <div class="oh-desktop">
+                  <div class="wow slideInLeft" data-wow-delay="0s">
+                    <h6 class="text-spacing-100 text-uppercase">Quick links</h6>
+                    <ul
+                      class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2"
+                    >
+                      <li><a href="about.html">About us</a></li>
+                      <li><a href="#">Our Tours</a></li>
+                      <li><a href="#">Our Team</a></li>
+                      <li><a href="#">Gallery</a></li>
+                      <li><a href="#">Blog</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-corporate-bottom-panel">
+          <div class="container">
+            <div
+              class="row justfy-content-xl-space-berween row-10 align-items-md-center2"
+            >
+              <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+                <div>
+                  <ul class="list-inline list-inline-sm footer-social-list-2">
+                    <li><a class="icon fa fa-facebook" href="#"></a></li>
+                    <li><a class="icon fa fa-twitter" href="#"></a></li>
+                    <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                    <li><a class="icon fa fa-instagram" href="#"></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 order-sm-first">
+                <!-- Rights <a href="https://www.templatemonster.com">TemplateMonster</a>-->
+                <p class="rights">
+                  <span>&copy;&nbsp;</span><span class="copyright-year"></span
+                  ><span>&nbsp;</span>. All Rights Reserved. Design by Jorge
+                </p>
+              </div>
+              <div class="col-sm-6 col-md-4 text-md-right">
+                <p class="rights"><a href="#">Privacy Policy</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+
+    <script src="openseadragon/openseadragon-bin-4.1.0/openseadragon.min.js"></script>
+    <script src="openseadragon/openseadragon-annotations-1.0.5/dist/openseadragon-annotations.js"></script>
+    <script src="js/opensedragon_script.js"></script>
+    <script src="js/script.js"></script>
+    
+  </body>
+</html>

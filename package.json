@@ -1,0 +1,27 @@
+{
+  "name": "miproyecto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@annotorious/annotorious": "^3.0.11",
+    "@annotorious/openseadragon": "^3.0.11",
+    "@recogito/annotorious": "^2.7.13",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
+    "openseadragon": "^5.0.0"
+  },
+  "description": ""
+}
