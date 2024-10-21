@@ -17,20 +17,20 @@ app.use(cors({
 app.use(express.json());
 
 app.use(session({
-  secret: 'secret-key',
+  secret: 'secret-key', // Cambia esto a una clave más segura en producción
   resave: false,
-  saveUninitialized: false, // Evitar sesiones innecesarias
+  saveUninitialized: false,
   cookie: { 
-    secure: false, // Cambiar a true si usas HTTPS
+    secure: false, // Cambiar a true si usas HTTPS en producción
     httpOnly: true,
-    sameSite: 'lax', // Asegura que las cookies funcionen en el mismo dominio
+    sameSite: 'lax',
     maxAge: 7 * 24 * 60 * 60 * 1000 // 1 semana de validez para la sesión
   }
 }));
 
 // Importar rutas
-const sampleRoutes = require('./routes/samples');
-const userRoutes = require('./routes/users');
+const sampleRoutes = require('./routes/samples'); // Asegúrate de tener este archivo o elimínalo si no es necesario.
+const userRoutes = require('./routes/users'); // Asegúrate de tener este archivo o elimínalo si no es necesario.
 const loginRoutes = require('./routes/loginRoute');
 
 // Registrar rutas
@@ -43,7 +43,7 @@ app.get('/histologia.html', (req, res) => {
   if (!req.session.user) {
     return res.redirect('/login.html'); // Redirigir si no está autenticado
   }
-  res.sendFile(__dirname + '/path/to/histologia.html'); // Servir archivo si está autenticado
+  res.sendFile(__dirname + '/path/to/histologia.html'); // Cambia la ruta según tu estructura de archivos.
 });
 
 // Puerto desde .env o 3001 por defecto
@@ -53,5 +53,5 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
-// Servir archivos DZI
+// Servir archivos DZI (cambia esta ruta según tu necesidad)
 app.use('/dzi', express.static('C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI'));

@@ -1,0 +1,184 @@
+-- Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS MedicalHistDB;
+
+-- Usar la base de datos
+USE MedicalHistDB;
+
+-- Crear tabla de usuarios
+CREATE TABLE IF NOT EXISTS Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL
+);
+
+-- Borrar cualquier usuario existente con el mismo nombre
+DELETE FROM Users WHERE username = 'admin';
+
+-- Insertar usuario de prueba (admin / 1234)
+INSERT INTO Users (username, password) 
+VALUES (TRIM(LOWER('admin')), '1234');
+
+-- Crear tabla de tipos de tejido
+CREATE TABLE IF NOT EXISTS TissueTypes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla de muestras con la columna de la ruta DZI
+CREATE TABLE IF NOT EXISTS Samples (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    description TEXT NOT NULL,
+    is_scanned BOOLEAN NOT NULL,
+    tissue_type_id INT,
+    dzi_path VARCHAR(255) NOT NULL,
+    FOREIGN KEY (tissue_type_id) REFERENCES TissueTypes(id)
+);
+
+-- Insertar tipos de tejido
+INSERT INTO TissueTypes (name) VALUES
+('Tejido Epitelial'),
+('Mucosa y Submucosa'),
+('Tejido Conectivo'),
+('Tejido Muscular'),
+('Tejido Nervioso'),
+('Venas y Arterias'),
+('Órganos y Glándulas'),
+('Mamíferos');
+
+-- Insertar muestras para "TEJIDO EPITELIAL"
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('312360', 'EPHITELIUM, SIMP SQUAM, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312360.dzi'),
+('312366', 'EPHITELIUM, SIMPLE CUBOIDAL, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312366.dzi'),
+('312426', 'EPHITELIUM, SIMP COL, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312426.dzi'),
+('312438', 'EPHITELIUM, SIMP CIL COL, HUMAN', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312438.dzi'),
+('312444', 'EPHITELIUM, GLANDULAR, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312444.dzi'),
+('312462', 'EPHITELIUM, TRANSITIONAL, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312462.dzi'),
+('312486', 'EPHITELIUM, PSEUDO CIL COL, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312486.dzi'),
+('312534', 'EPHITELIUM, STRAT SQU, HUMN, SMR', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312534.dzi'),
+('312540', 'EPHITELIUM, STRAT SQU, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312540.dzi'),
+('C312552', 'HUMAN KERATINIZED EPITHELIUM', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\C312552.dzi'),
+('312558', 'EPITHELIUM, STRAT COL, HMN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312558.dzi'),
+('314522', 'SKIN, NONPIGMENTED, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314522.dzi'),
+('314528', 'SKIN, HEAVILY PIGMENT, HMN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314528.dzi'),
+('314558', 'SKIN, PLANTAR, HUMAN, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314558.dzi'),
+('314595', 'SKIN SHOWING SWEAT GLANDS', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314595.dzi'),
+('314612', 'SCALP, HUMAN, LS', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314612.dzi'),
+('314998', 'ESOPHAGUS, EPITHELIUM, CS', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314998.dzi'),
+('31-2444', 'HUMAN GLANDULAR EPITHELIUM, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2444.dzi'),
+('31-2534', 'EPITHELIUM STRAT. SQUAMOUS HUMAN, SMEAR', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2534.dzi'),
+('31-2444_1', 'HUMAN GLANDULAR EPITHELIUM, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2444_1.dzi'),
+('314522_1', 'HUMAN SKIN NONPIGMENTED SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314522_1.dzi'),
+('314528_1', 'HUMAN SKIN PIGMENTED EPITHELIUM SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314528_1.dzi'),
+('314528_2', 'HUMAN SKIN PIGMENTED EPITHELIUM SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314528_2.dzi'),
+('314522_2', 'HUMAN SKIN NONPIGMENTED SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314522_2.dzi'),
+('31-2534_1', 'EPITHELIUM STRAT, SQUAMOUS GUMAN, SMEAR', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2534_1.dzi'),
+('31-2534_2', 'EPITHELIUM STRAT, SQUAMOUS GUMAN, SMEAR', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2534_2.dzi'),
+('31-2444_2', 'HUMAN GLANDULAR EPITHELIUM, SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2444_2.dzi'),
+('314522_3', 'HUMAN SKIN NONPIGMENTED SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314522_3.dzi'),
+('314528_3', 'HUUMAN, SKIN PIGMENTED EPITHELIUM SEC', TRUE, 1, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314528_3.dzi');
+
+-- Insertar muestras para "MUCOSA Y SUBMUCOSA"
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('31-2656', 'MUCOUS TISSUE, CS', TRUE, 2, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2656.dzi'),
+('313804', 'MEISSNER''S, PLEXUS, SEC', TRUE, 2, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313804.dzi');
+
+-- Insertar muestras para "TEJIDO CONECTIVO"
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('312668', 'RETICULAR TISSUE, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312668.dzi'),
+('312686', 'AREOLAR TISSUE, SPREAD', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312686.dzi'),
+('312728', 'ADIPOSE TISSUE, HUMAN, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312728.dzi'),
+('31-2752', 'ELASTIC TISSUE, LS', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2752.dzi'),
+('312764', 'ELASTIC TISSUE, HUMAN, VERH, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312764.dzi'),
+('312910', 'CARTILAGE, ELASTIC, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312910.dzi'),
+('312922', 'FIBROCARTILAGE, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312922.dzi'),
+('31-2946', 'BONE, SPONGY, HUMAN, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2946.dzi'),
+('31-2952', 'BONE, COMPACT, MAMMAL, CS', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2952.dzi'),
+('312958', 'BONE, COMPACT, MAMMAL, LS', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312958.dzi'),
+('312964', 'BONE, GROUND, CS', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312964.dzi'),
+('31-3012', 'BONE, DEVELOPING MEMBRANE, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-3012.dzi'),
+('313152', 'BLOOD, HUMAN H&E, SMEAR', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313152.dzi'),
+('313158', 'HUMAN BLOOD SMEAR WEIGHT\'S', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313158.dzi'),
+('313170', 'BONE MARROW, SEC', TRUE, 3, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313170.dzi');
+
+-- Insertar muestras para Tejido Muscular
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('313256', 'MUSCLE, SKELETAL, SEC', TRUE, 4, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313256.dzi'),
+('313340', 'MUSCLE, SMOOTH, CS', TRUE, 4, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313340.dzi'),
+('313364', 'MUSCLE, SMOOTH, HUMAN INTEST, LS', TRUE, 4, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313364.dzi'),
+('313388', 'MUSCLE, CARDIAC, SEC', TRUE, 4, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313388.dzi');
+
+-- Insertar muestras para Tejido Nervioso
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('313618', 'CEREBRUM, H & E, SEC', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313618.dzi'),
+('313660', 'CEREBELLUM, H & E, SEC', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313660.dzi'),
+('313708', 'SPINAL CORD, H & E, CS', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313708.dzi'),
+('313726', 'SPINAL CORD, SILVER, CS', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313726.dzi'),
+('313792', 'SPINAL GANG AND NERVE, LS', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313792.dzi'),
+('314142', 'PURKINJE FIBERS, SEC', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314142.dzi'),
+('314256', 'LYMPH NODE, SEC', TRUE, 5, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314256.dzi');
+
+-- Insertar muestras para Venas y Arterias
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('313998', 'AORTA, HUMAN, H & E, CS', TRUE, 6, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313998.dzi'),
+('314010', 'AORTA, HUMAN, VERH, CS', TRUE, 6, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314010.dzi'),
+('314046', 'VENA CAVA, HUMAN, SEC', TRUE, 6, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314046.dzi'),
+('314082', 'ARTERY AND VEIN, CS', TRUE, 6, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314082.dzi');
+
+-- Insertar muestras para Órganos y Glándulas
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('C313840', 'CORNEA, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\C313840.dzi'),
+('314304', 'TONSIL, LINGUAL, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314304.dzi'),
+('314382', 'THYMUS, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314382.dzi'),
+('314636', 'MAMMARY GLAND, RESTING, HMN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314636.dzi'),
+('314642', 'MAMMARY GLAND, LACT, HMN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314642.dzi'),
+('314788', 'PAPILLAE, FILIFORM, TONGUE, HMN', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314788.dzi'),
+('314806', 'PAPILLAe, FUNGIFORM, TONGUE, HMN', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314806.dzi'),
+('314902', 'PAROTID GLAND, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314902.dzi'),
+('314962', 'SUBLINGUAL GLAND, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314962.dzi'),
+('315076', 'STOMACH, CARDIAC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315076.dzi'),
+('315082', 'STOMACH, FUNDIC, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315082.dzi'),
+('315142', 'INTESTINE, SMALL, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315142.dzi'),
+('C315184', 'DUODENUM, LOWER, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\C315184.dzi'),
+('315214', 'JEJUNUM, HUMAN, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315214.dzi'),
+('315226', 'ILEUM, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315226.dzi'),
+('315262', 'APPENDIX, HUMAN, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315262.dzi'),
+('315274', 'COLON, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315274.dzi'),
+('315358', 'LIVER, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315358.dzi'),
+('315424', 'GALLBLADDER, BODY, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315424.dzi'),
+('315442', 'PANCREAS, MAMMAL, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315442.dzi'),
+('CH8108', 'RECTUM', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\CH8108.dzi'),
+('315612', 'TRACHEA, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315612.dzi'),
+('315670', 'LUNG, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315670.dzi'),
+('315860', 'BLADDER, CONTRACTED, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315860.dzi'),
+('316012', 'GRAAFIAN FOLLICLES, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316012.dzi'),
+('316030', 'CORPUS LUTEUM,SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316030.dzi'),
+('316060', 'CORPUS ALBICANS, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316060.dzi'),
+('316102', 'FALLOPIAN TUBE, HUMAN, CS', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316102.dzi'),
+('316150', 'UTERUS, PREGNANT', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316150.dzi'),
+('316228', 'VAGINA,HUMAN,SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316228.dzi'),
+('316240', 'PLACENTA,HUMAN,H&E,SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316240.dzi'),
+('316458', 'EFFERENT TUBULES, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316458.dzi'),
+('316548', 'PROSTATE GLAND, OLDER, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316548.dzi'),
+('316566', 'PENIS, HUMAN, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316566.dzi'),
+('316590', 'SPERM, HUMAN, SMEAR', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316590.dzi'),
+('316670', 'HYPOPHYSIS, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316670.dzi'),
+('31-4636', 'HUMAN RESTING MAMMARY GLAND SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-4636.dzi'),
+('316718', 'THYROID&PARATHYROID GLAND, SEC', TRUE, 7, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316718.dzi');
+
+-- Insertar muestras para Mamíferos
+INSERT INTO Samples (code, description, is_scanned, tissue_type_id, dzi_path) VALUES
+('312788', 'TENDOM, MAMMAL, LS', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312788.dzi'),
+('31-2806', 'MUSCLE-TENDOM JUNCT, MAMMAL, LS', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-2806.dzi'),
+('312886', 'HYALINE CARTILAGE, MAMMAL, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\312886.dzi'),
+('313570', 'GIANT MULTIPOLAR NEURON, MAMMAL', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\313570.dzi'),
+('31-4016', 'ARTERY, MAMMAL, CS', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\31-4016.dzi'),
+('314504', 'SKIN, MAMMAL, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314504.dzi'),
+('314758', 'PAPILLAE, FOLIATE/TASTE BUD, MAM', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\314758.dzi'),
+('315112', 'STOMACH, PYLORIC, MAMMAL, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315112.dzi'),
+('315160', 'DUODENUM, MAMMAL, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315160.dzi'),
+('315776', 'MAMMAL KIDNEY, MEDIAN SAG SET', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\315776.dzi'),
+('316386', 'TESTIS, MAMMAL, H&E,SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316386.dzi'),
+('316464', 'EPIDIDYMIS,  MAMMAL, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316464.dzi'),
+('C316524', 'MAMMAL SEMINAL VESICLE, SEC', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\C316524.dzi'),
+('316750', 'MAMMAL ADRENAL GLAND', TRUE, 8, 'C:\\Users\\JOSSELYN\\Desktop\\TESIS DILAN\\DZI\\316750.dzi');

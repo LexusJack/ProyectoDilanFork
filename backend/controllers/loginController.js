@@ -19,7 +19,8 @@ const login = (req, res) => {
 
     const user = results[0];
 
-    if (user.password === password) {
+    // Compara la contraseña ingresada con la almacenada
+    if (password === user.password) { // Comparación directa sin hash
       req.session.user = user;
       console.log('Login exitoso:', user);
       return res.status(200).json({ message: 'Login exitoso' });
@@ -27,6 +28,23 @@ const login = (req, res) => {
       console.log('Contraseña incorrecta');
       return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
     }
+  });
+};
+
+const createUser = (req, res) => {
+  const { username, password } = req.body; // Eliminado email
+  const cleanedUsername = username.trim().toLowerCase();
+
+  // Inserta el nuevo usuario en la base de datos sin validar si ya existe
+  const insertQuery = 'INSERT INTO Users (username, password) VALUES (?, ?)';
+  db.query(insertQuery, [cleanedUsername, password], (err, results) => {
+    if (err) {
+      console.error('Error al insertar el usuario:', err);
+      return res.status(500).json({ error: 'Error en el servidor.' });
+    }
+
+    console.log('Usuario creado exitosamente:', { username: cleanedUsername });
+    return res.status(201).json({ message: 'Usuario creado exitosamente' });
   });
 };
 
@@ -39,4 +57,4 @@ const logout = (req, res) => {
   });
 };
 
-module.exports = { login, logout };
+module.exports = { login, createUser, logout };
